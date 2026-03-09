@@ -1,0 +1,175 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #87ceeb;
+}
+
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.app-container h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.todo-container {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.todo-container {
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+.todo-item {
+  background: #ffffff;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  position: relative;
+  cursor: pointer;
+}
+
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+
+.delete-icon {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+.task-details {
+  margin-top: 12px;
+  padding: 14px;
+  background: #f7f9fc;
+  border-radius: 8px;
+  border-left: 4px solid #4f46e5;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.task-details p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.task-details input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.task-details input:focus {
+  border-color: #4f46e5;
+}
+
+.task-details button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.task-details button:hover {
+  background: #4338ca;
+}
+
+
+.task-details select {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.add-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.add-box button {
+  padding: 10px 16px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-box button:hover {
+  background: #16a34a;
+}
+
+
+.search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* List */
+ul {
+  list-style: none;
+  padding: 0;
+}

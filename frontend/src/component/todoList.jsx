@@ -18,23 +18,27 @@ function TodoList() {
 
   useEffect(() => {
     loadTodos();
+  }, []);
+
+  useEffect(() => {
+    loadTodos(search);
   },
- 
-     []);
+ [search]);
+   
      useEffect(() => {
   if (!error) return;
 
   const timer = setTimeout(() => {
     setError(null);
-  }, 3000);
+  },5000);
 
   return () => clearTimeout(timer);
 }, [error]);
 
-  const loadTodos = async () => {
+  const loadTodos = async (searchValue = "") =>  {
     try {
       setLoading(true);
-      const { data } = await getTodos();
+      const { data } = await getTodos(searchValue);
       setTodos(data);
     } catch {
       setError("Failed to load tasks");
@@ -44,7 +48,10 @@ function TodoList() {
   };
 
   const handleAdd = async () => {
-    if (!title.trim()) return;
+    if (!title.trim()){
+        setError("Title is required");
+    return;
+    }
 
     try {
       await createTodo({
@@ -58,7 +65,7 @@ function TodoList() {
       setTitle("");
       loadTodos();
     } catch (err) {
-  setError(err.message || "Failed to create task");
+setError(err.response?.data?.message || "Failed to create task");
 }
   };
 
@@ -74,7 +81,7 @@ function TodoList() {
       setOpenTaskId(null);
       loadTodos();
     } catch(err) {
-      setError(err.message || "Update failed");
+       setError(err.response?.data?.message || "Update failed");
     }
   };
 
@@ -84,7 +91,7 @@ function TodoList() {
          setError(null);
       loadTodos();
     } catch (err) {
-      setError(err.message || "Status update failed");
+        setError(err.response?.data?.message || "Status update failed");
     }
   };
 
@@ -94,7 +101,7 @@ function TodoList() {
       setTodos((prev) => prev.filter((t) => t._id !== id));
       setError(null);
     } catch (err) {
-      setError(err.message || "Delete failed");
+      setError(err.response?.data?.message || "Delete failed");
     }
   };
 
@@ -126,6 +133,7 @@ function TodoList() {
       {error && <p className="error">{error}</p>}
 
       <ul>
+         
         {filteredTodos.map((todo) => (
           <li key={todo._id} className="todo-item">
             

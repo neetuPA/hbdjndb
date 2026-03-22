@@ -20,3 +20,10 @@ for getting the task by id use GEt : http://localhost:3000/api/tasks/<id>
   2. Sometimes, when sending data in POST requests, the server gave “Unexpected end of JSON input” errors.
   3. While I use the POST method and in status instaed of completed I wrote complete in json body it through error tha such status is not present in enum status.
   4. I got errors like Cannot POST /api/tasks because the route in Express was not correct.
+
+------- Installation-----\
+npm i
+
+--------to run the project-----
+npm run dev
+

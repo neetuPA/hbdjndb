@@ -13,12 +13,23 @@ function TodoList() {
   const [search, setSearch] = useState("");
   const [openTaskId, setOpenTaskId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadTodos();
-  }, []);
+  },
+ 
+     []);
+     useEffect(() => {
+  if (!error) return;
+
+  const timer = setTimeout(() => {
+    setError(null);
+  }, 3000);
+
+  return () => clearTimeout(timer);
+}, [error]);
 
   const loadTodos = async () => {
     try {
@@ -37,15 +48,18 @@ function TodoList() {
 
     try {
       await createTodo({
+        
+  
         title,
         date: new Date(),
         status: "pending",
       });
+      setError(null);
       setTitle("");
       loadTodos();
-    } catch {
-      setError("Could not add task");
-    }
+    } catch (err) {
+  setError(err.message || "Failed to create task");
+}
   };
 
   const toggleDetails = (todo) => {
@@ -56,19 +70,21 @@ function TodoList() {
   const handleUpdateTitle = async (id) => {
     try {
       await updateTodo(id, { title: editTitle });
+        setError(null);
       setOpenTaskId(null);
       loadTodos();
-    } catch {
-      setError("Update failed");
+    } catch(err) {
+      setError(err.message || "Update failed");
     }
   };
 
   const handleStatusChange = async (id, status) => {
     try {
       await updateTodoStatus(id, status);
+         setError(null);
       loadTodos();
-    } catch {
-      setError("Status update failed");
+    } catch (err) {
+      setError(err.message || "Status update failed");
     }
   };
 
@@ -76,8 +92,9 @@ function TodoList() {
     try {
       await deleteTodo(id);
       setTodos((prev) => prev.filter((t) => t._id !== id));
-    } catch {
-      setError("Delete failed");
+      setError(null);
+    } catch (err) {
+      setError(err.message || "Delete failed");
     }
   };
 

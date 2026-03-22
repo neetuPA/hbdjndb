@@ -1,4 +1,4 @@
-
+/*  */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +10,6 @@ body {
   background: #87ceeb;
   background-image: url(./assets/5665422.jpg);
 }
-
 
 .app-container {
   min-height: 100vh;
@@ -25,19 +24,15 @@ body {
   color: #333;
 }
 
+
 .todo-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
+  margin: 40px auto;
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.todo-container {
-  max-width: 600px;
-  margin: 40px auto;
-  font-family: Arial, sans-serif;
 }
 
 .todo-item {
@@ -50,12 +45,10 @@ body {
   cursor: pointer;
 }
 
-
 .completed {
   text-decoration: line-through;
   color: gray;
 }
-
 
 .delete-icon {
   position: absolute;
@@ -65,7 +58,6 @@ body {
   font-size: 16px;
 }
 
-
 .task-details {
   margin-top: 12px;
   padding: 14px;
@@ -74,7 +66,6 @@ body {
   border-left: 4px solid #4f46e5;
   animation: fadeIn 0.3s ease-in-out;
 }
-
 
 .task-details p {
   margin: 6px 0;
@@ -112,7 +103,6 @@ body {
   background: #4338ca;
 }
 
-
 .task-details select {
   width: 100%;
   margin-top: 8px;
@@ -148,7 +138,6 @@ body {
   background: #16a34a;
 }
 
-
 .search {
   width: 100%;
   padding: 10px;
@@ -156,7 +145,6 @@ body {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -169,7 +157,6 @@ body {
   }
 }
 
-/* List */
 ul {
   list-style: none;
   padding: 0;
